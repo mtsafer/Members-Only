@@ -1,0 +1,21 @@
+<h1>Write an Article</h1>
+
+<%= form_for @article do |f|%>
+	<% if @article.errors.any? %>
+	  <div id="error_explanation">
+	    <div class="alert alert-danger">
+	      The form contains <%= pluralize(@article.errors.count, "error") %>.
+	    </div>
+	    <ul>
+	    <% @article.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+	<%= f.label :title %>
+	<%= f.text_field :title, class: "form-controll" %>
+	<%= f.label :body %>
+	<%= f.text_area :body, class: "form-controll" %>
+	<%= f.submit "Post" %>
+<% end %>

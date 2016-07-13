@@ -1,1 +1,17 @@
 <h1>Members Only!</h1>
+
+
+<% if logged_in? %>
+	<%= link_to "New post", new_article_path, class: "btn btn-primary" %>
+<% else %>
+	<%= link_to "Sign Up Now!", signup_path, class: "btn btn-success" %>
+	or
+	<%= link_to "Log in", login_path, class: "btn btn-success" %>
+<% end %>
+
+
+<ul class="articles">
+	<% @articles.each do |a| %>
+		<li><%= link_to a.title, a %></li>
+	<% end %>
+</ul>
